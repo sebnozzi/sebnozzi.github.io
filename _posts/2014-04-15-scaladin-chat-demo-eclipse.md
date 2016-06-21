@@ -26,7 +26,7 @@ What I set up to do was modify the IDE-generated Vaadin project until:
 
 As an excercise I &#8220;ported&#8221; (actually more like &#8220;copy-pasting&#8221;) the existing &#8220;[Scaladin Chat demo](https://github.com/henrikerola/scaladin-chat)&#8221; to the IDE-generated default setup.
 
-[<img src="/assets/2014/04/scaladin-chat-eclipse.png" alt="scaladin-chat-eclipse" width="1325" height="929" class="aligncenter size-full wp-image-290" />](http://www.sebnozzi.com/wp-content/uploads/2014/04/scaladin-chat-eclipse.png)
+[<img src="/assets/2014/04/scaladin-chat-eclipse.png" alt="scaladin-chat-eclipse" width="1325" height="929" class="aligncenter size-full wp-image-290" />](/assets/2014/04/scaladin-chat-eclipse.png)
 
 Here&#8217;s what I did&#8230;
 
@@ -38,24 +38,24 @@ However, I did not add the `scala-library.jar` as instructed there. Instead, I a
 
     <!-- Scala Runtime Library -->      
     <dependency org="org.scala-lang" name="scala-library" rev="2.10.4"/>
-    
+
 
 At that point I had a Scala-capable Vaadin project. Then I added [Scaladin](https://github.com/henrikerola/scaladin):
 
     <!-- Scaladin -->
     <dependency org="org.vaadin.addons" name="scaladin" rev="3.0.0" />
-    
+
 
 Since I didn&#8217;t know how to bootstrap Scaladin from a Scala class, I left the Java bootstraping class for the moment. Instead, I wrote a Scala class that would provide the main component:
 
     package com.example.vaadindemo
-    
+
     import vaadin.scala.VerticalLayout
     import vaadin.scala.Button
     import vaadin.scala.Notification
-    
+
     class SomeScalaClass {
-    
+
       def content: com.vaadin.ui.Component = {
         val scaladinComponent = new VerticalLayout {
           margin = true
@@ -64,43 +64,43 @@ Since I didn&#8217;t know how to bootstrap Scaladin from a Scala class, I left t
             Notification.show("Hello via Scaladin!")
           })
         }
-    
+
         // return the "real" wrapped Vaadin component
         scaladinComponent.p
       }
-    
+
     }
-    
+
 
 Here you can see that I&#8217;m returning a normal Vaadin UI component, not a Scaladin one. Although I am using Scaladin&#8217;s &#8220;magic&#8221; (the nice DSL which wraps over Vaadin) at the end of the day I return the wrapped Vaadin component. Which is the one &#8220;consumed&#8221; by the Java bootstrapping class:
 
     package com.example.vaadindemo;
-    
+
     import javax.servlet.annotation.WebServlet;
-    
+
     import com.vaadin.annotations.Theme;
     import com.vaadin.annotations.VaadinServletConfiguration;
     import com.vaadin.server.VaadinRequest;
     import com.vaadin.server.VaadinServlet;
     import com.vaadin.ui.UI;
-    
+
     @SuppressWarnings("serial")
     @Theme("vaadindemo")
     public class VaadindemoUI extends UI {
-    
+
         @WebServlet(value = "/*", asyncSupported = true)
         @VaadinServletConfiguration(productionMode = false, ui = VaadindemoUI.class, widgetset = "com.example.vaadindemo.widgetset.VaadindemoWidgetset")
         public static class Servlet extends VaadinServlet {
         }
-    
+
         @Override
         protected void init(VaadinRequest request) {
         SomeScalaClass scalaInstance = new SomeScalaClass();
             setContent(scalaInstance.content());
         }
-    
+
     }
-    
+
 
 Note how the Java part consumes the component instantiated on the Scala part. This is a very nice setup to profit from Vaadin&#8217;s annotations, which makes using a `web.xml` file unnecessary. More on that in a moment.
 
@@ -120,13 +120,13 @@ First thing I did was to check if I satisfied the dependencies&#8230; These are 
       "org.eclipse.jetty" % "jetty-webapp" % "8.1.12.v20130726" % "container",
       "org.eclipse.jetty" % "jetty-websocket" % "8.1.12.v20130726" % "container"
     )
-    
+
 
 What&#8217;s obviously missing is `akka-actor`. I assumed that the jetty components were used by the sbt-plugin and not needed in my case (I was using Tomcat). So I added the missing dependency to my Ivy file:
 
     <!-- Akka Actors -->
     <dependency org="com.typesafe.akka" name="akka-actor_2.10" rev="2.2.1"/>
-    
+
 
 After that I copy-pasted the Scala classes / files directly under &#8220;src&#8221;:
 
@@ -151,7 +151,7 @@ Other info covered by the annotations can be passed as initialization parameters
       theme = "vaadindemo",
       widgetset = "com.example.scaladinchat.widgetset.VaadindemoWidgetset")
         with ChatClient { app =>
-    
+
 
 I had changed the path of the widgetset file. As a last step, I deleted my two previous files `VaadindemoUI.java` and `SomeScalaClass.scala`.
 

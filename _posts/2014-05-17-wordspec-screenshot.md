@@ -22,4 +22,4 @@ Recently discovered the &#8220;WordSpec&#8221; variant of [ScalaTest](http://www
 
 I think it&#8217;s a very elegant way to model unit-testing. But not only in code, but in the resulting view of the Scala-IDE view:
 
-[<img src="/assets/2014/05/wordspec-1024x876.png" alt="WordSpec Screenshot" width="584" height="499" class="aligncenter size-large wp-image-385" />](http://www.sebnozzi.com/wp-content/uploads/2014/05/wordspec.png)
+[<img src="/assets/2014/05/wordspec-1024x876.png" alt="WordSpec Screenshot" width="584" height="499" class="aligncenter size-large wp-image-385" />](/assets/2014/05/wordspec.png)

@@ -21,7 +21,7 @@ In our <a title="Scala-Vienna-User-Group Dojo" href="http://www.meetup.com/scala
 
 The initial problem was like this: I brought game server (running on my laptop) and the task was to implement an interactive console-based client. A simple overview of the client logic can be illustrated like this:
 
-[<img class="wp-image-107 aligncenter" alt="wordguess-workflow" src="/assets/2013/12/wordguess-workflow.png" width="216" height="364" />](http://www.sebnozzi.com/wp-content/uploads/2013/12/wordguess-workflow.png)
+[<img class="wp-image-107 aligncenter" alt="wordguess-workflow" src="/assets/2013/12/wordguess-workflow.png" width="216" height="364" />](/assets/2013/12/wordguess-workflow.png)
 
 Actually it was an <a title="Word-guess-server project" href="https://github.com/scala-vienna/wordguess-server" target="_blank">Akka-based word-guessing server</a>, for which I provided the <a title="Word-guess-client project" href="https://github.com/scala-vienna/wordguess-client" target="_blank">bare-bones client project</a>, which already came with the Akka-messages, the setup, and the message processing loop.
 
@@ -47,7 +47,7 @@ case class NoAvailableGames()
 
 Given those messages, we can illustrate the message passing:
 
-[<img class="wp-image-116 aligncenter" alt="wordguess-messaging" src="/assets/2013/12/wordguess-messaging1.png" width="211" height="228" />](http://www.sebnozzi.com/wp-content/uploads/2013/12/wordguess-messaging1.png)
+[<img class="wp-image-116 aligncenter" alt="wordguess-messaging" src="/assets/2013/12/wordguess-messaging1.png" width="211" height="228" />](/assets/2013/12/wordguess-messaging1.png)
 
 As I would have expected, the interactive client was done in no time. After 10 minutes or so all the pairs had finished their implementations and were already trying to guess some words.
 

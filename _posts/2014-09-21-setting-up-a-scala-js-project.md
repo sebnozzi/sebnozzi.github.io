@@ -163,7 +163,7 @@ Note that the &#8220;launcher&#8221; line remains the same.
 
 If all of the above steps were done correctly, upon loading `index-fastopt.htmt` you should see:
 
-[<img src="/assets/2014/09/hello-scalajs-jquery.png" alt="Hello Scala.js with jQuery" width="628" height="197" class="alignleft size-full wp-image-423" />](http://www.sebnozzi.com/wp-content/uploads/2014/09/hello-scalajs-jquery.png)
+[<img src="/assets/2014/09/hello-scalajs-jquery.png" alt="Hello Scala.js with jQuery" width="628" height="197" class="alignleft size-full wp-image-423" />](/assets/2014/09/hello-scalajs-jquery.png)
 
 ## Summary
 
