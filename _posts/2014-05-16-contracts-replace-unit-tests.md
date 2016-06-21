@@ -34,7 +34,7 @@ In this article we shall only consider method pre- and post-conditions. That mea
 
 It&#8217;s an automatic runtime-enforced form of defensive programming. Recently I started debating with an Eiffel expert about unit-tests vs. contracts, his points being that contracts offer a superior mechanism over unit-tests. That discussion lead me to analyse his claims and write this article.
 
-<img src="/assets/uploads/2014/05/agreement-hands-300x198.jpg" alt="agreement-hands" width="300" height="198" class="aligncenter size-medium wp-image-391" />
+<img src="/assets/2014/05/agreement-hands-300x198.jpg" alt="agreement-hands" width="300" height="198" class="aligncenter size-medium wp-image-391" />
 
 So the question is: **can contracts replace unit-tests?**
 
