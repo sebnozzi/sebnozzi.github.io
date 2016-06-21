@@ -16,7 +16,7 @@ tags:
   - scala
   - scala.js
 ---
- <img class=" wp-image-101 alignnone" style="font-family: 'Open Sans', sans-serif; font-size: 15px; line-height: 24.296875px; font-style: normal; font-variant: normal;" alt="scala-to-js" src="http://www.sebnozzi.com/wp-content/uploads/2013/09/scala-to-js.png" width="762" height="386" />Whenever coding JavaScript, these are some of the things I miss from Scala:
+ <img class=" wp-image-101 alignnone" style="font-family: 'Open Sans', sans-serif; font-size: 15px; line-height: 24.296875px; font-style: normal; font-variant: normal;" alt="scala-to-js" src="/assets/2013/09/scala-to-js.png" width="762" height="386" />Whenever coding JavaScript, these are some of the things I miss from Scala:
 
   * Type-checking 
   * Type declarations 

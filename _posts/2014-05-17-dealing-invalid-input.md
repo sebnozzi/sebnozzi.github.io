@@ -29,7 +29,7 @@ Since those values will be known at _run-time_, we are forced to deal with them 
 
 What do I mean? If we can model the situation where value is either valid or not _with the type-system_ then we&#8217;ll have all the compiler assistance we want.
 
-<img src="http://www.sebnozzi.com/wp-content/uploads/2014/05/Choice-sign-300x180.jpg" alt="Choice-sign" width="300" height="180" class="aligncenter size-medium wp-image-388" />
+<img src="/assets/2014/05/Choice-sign-300x180.jpg" alt="Choice-sign" width="300" height="180" class="aligncenter size-medium wp-image-388" />
 
 In Scala this is easily doable and in fact already part of the standard library. But nothing prevents it from being implemented in other languages as well (how easy or difficult this would be, is another question).
 

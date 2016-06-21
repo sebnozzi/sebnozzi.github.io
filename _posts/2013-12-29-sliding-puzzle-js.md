@@ -20,7 +20,7 @@ tags:
 
 This **sliding-puzzle** started being an experiment to learn the basics of **JavaFX**. So the first version was **desktop-only**:
 
-[<img class="aligncenter size-full wp-image-129" alt="screenshot-javafx" src="http://www.sebnozzi.com/wp-content/uploads/2013/12/screenshot-javafx.jpg" width="694" height="504" />](http://www.sebnozzi.com/wp-content/uploads/2013/12/screenshot-javafx.jpg)
+[<img class="aligncenter size-full wp-image-129" alt="screenshot-javafx" src="/assets/2013/12/screenshot-javafx.jpg" width="694" height="504" />](http://www.sebnozzi.com/wp-content/uploads/2013/12/screenshot-javafx.jpg)
 
 But at the same time I already had heard of **[Scala.js](http://www.scala-js.org/)**, so I took care to make the code modular, separating **game-logic** from the **UI** as much as possible.
 
@@ -54,7 +54,7 @@ Once I got it working, I began to **migrate** what I had written in JavaScript m
 
 After some days of hard-work I finally arrived at a version I&#8217;m comfortable with:
 
-[<img class="aligncenter size-full wp-image-130" alt="screenshot-browser" src="http://www.sebnozzi.com/wp-content/uploads/2013/12/screenshot-browser.jpeg" width="672" height="545" />](http://www.sebnozzi.com/wp-content/uploads/2013/12/screenshot-browser.jpeg)
+[<img class="aligncenter size-full wp-image-130" alt="screenshot-browser" src="/assets/2013/12/screenshot-browser.jpeg" width="672" height="545" />](http://www.sebnozzi.com/wp-content/uploads/2013/12/screenshot-browser.jpeg)
 
 ## Results
 

@@ -26,7 +26,7 @@ What I set up to do was modify the IDE-generated Vaadin project until:
 
 As an excercise I &#8220;ported&#8221; (actually more like &#8220;copy-pasting&#8221;) the existing &#8220;[Scaladin Chat demo](https://github.com/henrikerola/scaladin-chat)&#8221; to the IDE-generated default setup.
 
-[<img src="http://www.sebnozzi.com/wp-content/uploads/2014/04/scaladin-chat-eclipse.png" alt="scaladin-chat-eclipse" width="1325" height="929" class="aligncenter size-full wp-image-290" />](http://www.sebnozzi.com/wp-content/uploads/2014/04/scaladin-chat-eclipse.png)
+[<img src="/assets/2014/04/scaladin-chat-eclipse.png" alt="scaladin-chat-eclipse" width="1325" height="929" class="aligncenter size-full wp-image-290" />](http://www.sebnozzi.com/wp-content/uploads/2014/04/scaladin-chat-eclipse.png)
 
 Here&#8217;s what I did&#8230;
 
