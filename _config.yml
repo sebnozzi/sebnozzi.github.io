@@ -16,5 +16,4 @@ twitter_username: sebnozzi
 github_username:  sebnozzi
 
 # Build settings
-markdown: redcarpet
 highlighter: pygments

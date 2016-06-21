@@ -14,6 +14,12 @@ What can you expect?
 * Scala-related articles
 * Articles about software design
 
+{% highlight scala %}
+object Blog {
+  def hello() = print('Welcome!')
+}
+{% endhighlight %}
+
 Stay tuned.
 
 [jekyll]: http://jekyllrb.com/docs/home
