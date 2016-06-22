@@ -1,6 +1,6 @@
 ---
 id: 84
-title: 'Scala to JavaScript &#8211; Comparing Scala.js and JScala'
+title: 'Comparing Scala.js and JScala'
 date: 2013-09-14T14:07:16+00:00
 author: Sebastian Nozzi
 layout: post
@@ -18,11 +18,11 @@ tags:
 ---
  <img class=" wp-image-101 alignnone" style="font-family: 'Open Sans', sans-serif; font-size: 15px; line-height: 24.296875px; font-style: normal; font-variant: normal;" alt="scala-to-js" src="/assets/2013/09/scala-to-js.png" width="762" height="386" />Whenever coding JavaScript, these are some of the things I miss from Scala:
 
-  * Type-checking 
-  * Type declarations 
-  * Classes / Traits / Case-Classes 
-  * Code modularization 
-  * IDE support 
+  * Type-checking
+  * Type declarations
+  * Classes / Traits / Case-Classes
+  * Code modularization
+  * IDE support
 
 In this post I want to compare two very promising frameworks that generate JavaScript code from Scala.
 
@@ -74,7 +74,7 @@ Github repo: <a href="https://github.com/nau/jscala" target="_blank">https://gi
   * **Covers only a subset of Scala</span>**
   * Covers only basic parts of the library (relies on JS for the rest)
   * Not trivial to modularize/share code
-  * Cryptic macro-expansion error messages 
+  * Cryptic macro-expansion error messages
 
 Note that although listed as a disadvantage, the fact that it only covers a subset of Scala and its library might be one of the reasons why code generation is so fast and clean. Being lightweight _has_ its advantages.
 
@@ -118,7 +118,7 @@ This is one obvious question to arise when reading about these two frameworks. I
 
 This is something very subjective. The first thing I would say is: use whichever approach you feel more **comfortable** with, and what **best suits** your needs. My personal opinion would be to use:
 
-  * **JScala** where you would write small-/medium-sized JavaScript code to really &#8220;script&#8221; some aspects of your web-page or application. It&#8217;s also best suited if your app is mostly server-based, but have some client-based aspects and don&#8217;t need advanced Scala features in your client-side-logic. It&#8217;s like Coffeescript but with Scala syntax. 
+  * **JScala** where you would write small-/medium-sized JavaScript code to really &#8220;script&#8221; some aspects of your web-page or application. It&#8217;s also best suited if your app is mostly server-based, but have some client-based aspects and don&#8217;t need advanced Scala features in your client-side-logic. It&#8217;s like Coffeescript but with Scala syntax.
   * **Scala.js** if you have a medium-/big-sized codebase, which deserves a project on its own. Something like a one-page JavaScript application (fat-client), a demo, or a game. If you need the full spectrum of the Scala language and its library, and want to share code between server and client, this might be your safest (and only?) bet. So choose wisely. Or combine both.
 
 # <span style="font-family: Oswald, sans-serif; font-size: 36px; line-height: 1.62em;">Conclusion</span>

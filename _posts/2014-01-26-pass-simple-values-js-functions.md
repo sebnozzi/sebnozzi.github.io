@@ -32,25 +32,28 @@ Let us illustrate the case by writing some functions on the host-page.
 
 Edit `index-dev.html` and add the following:
 
-<pre class="brush: html; notranslate">&lt;script type="text/javascript"&gt;
+```html
+<script type="text/javascript">
 function happyNew(name, year) {
   alert("Hey " + name + ", happy new " + year + "!");
 }
-&lt;/script&gt;
-</pre>
+</script>
+```
 
 As we saw in the recipe of [accessing the global scope](/220), we need to make the following import:
 
-<pre class="brush: scala; notranslate">import scala.scalajs.js
-import js.Dynamic.{ global =&gt; g }
-</pre>
+```scala
+import scala.scalajs.js
+import js.Dynamic.{ global => g }
+```
 
 Now on the Scala side you can call it like this:
 
-<pre class="brush: scala; highlight: [2]; notranslate">def main(): Unit = {
+```scala
+def main(): Unit = {
   g.happyNew("Martin", 2014)
 }
-</pre>
+```
 
 Which will result in the values being used and the corresponding alert being shown.
 
@@ -63,7 +66,8 @@ If your IDE shows the use of implicits, you&#8217;ll note that two implicit conv
 
 These are defined inside of Scala.js&#8217;s `js.Any`. This is an excerpt of that:
 
-<pre class="brush: scala; notranslate">package scala.scalajs.js
+```scala
+package scala.scalajs.js
 
 ...
 
@@ -78,7 +82,7 @@ object Any {
   implicit def fromString(s: java.lang.String): String = sys.error("stub")
   ...
 }
-</pre>
+```
 
 ### Important
 

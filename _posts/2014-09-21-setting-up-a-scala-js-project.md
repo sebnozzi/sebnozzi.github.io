@@ -45,7 +45,8 @@ Apply the following changes to the `build.sbt` file:
 
 My build.sbt looks like this:
 
-<pre class="brush: scala; highlight: [1,3,11]; notranslate">// Turn this project into a Scala.js project by importing these settings
+```scala
+// Turn this project into a Scala.js project by importing these settings
 scalaJSSettings
 
 name := "My Project"
@@ -61,7 +62,7 @@ libraryDependencies ++= Seq(
     "org.scala-lang.modules.scalajs" %%% "scalajs-jquery" % "0.6",
     "org.scala-lang.modules.scalajs" %% "scalajs-jasmine-test-framework" % scalaJSVersion % "test"
 )
-</pre>
+```
 
 ## Step 4: Generate and Import Project
 
@@ -93,7 +94,8 @@ Once the project is imported in the IDE, proceed to change:
 
 The resulting main class would look something like this:
 
-<pre class="brush: scala; highlight: [1,6,8,10]; notranslate">package com.sebnozzi
+```scala
+package com.sebnozzi
 
 import scala.scalajs.js
 import js.annotation.JSExport
@@ -102,10 +104,10 @@ import org.scalajs.jquery._
 
 object MyProject extends js.JSApp {
   def main(): Unit = {
-    jQuery("body").append("&lt;h1&gt;Hello from Scala.js using jQuery&lt;/h1&gt;")
+    jQuery("body").append("<h1>Hello from Scala.js using jQuery</h1>")
   }
 }
-</pre>
+```
 
 The IDE should have taken care of generating the corresponding folders.
 
@@ -135,27 +137,29 @@ Armed with this information, modify the HTML files accordingly:
 
 The file `index-fastopt.html` would look like this:
 
-<pre class="brush: html; highlight: [4,6,11,12]; notranslate">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;My Project&lt;/title&gt;
-  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/&gt;
-  &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;
-    &lt;!-- Add other JavaScript libraries here --&gt;
-&lt;/head&gt;
-&lt;body&gt;
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Project</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Add other JavaScript libraries here -->
+</head>
+<body>
 
-&lt;script type="text/javascript" src="./target/scala-2.10/my-project-fastopt.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./target/scala-2.10/my-project-launcher.js"&gt;&lt;/script&gt;
+<script type="text/javascript" src="./target/scala-2.10/my-project-fastopt.js"></script>
+<script type="text/javascript" src="./target/scala-2.10/my-project-launcher.js"></script>
 
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
+</body>
+</html>
+```
 
 The file `index.html` would look almost the same, the only difference being the &#8220;opt&#8221; suffix at this line:
 
-<pre class="brush: html; notranslate">&lt;script type="text/javascript" src="./target/scala-2.10/my-project-opt.js"&gt;&lt;/script&gt;
-</pre>
+```html
+<script type="text/javascript" src="./target/scala-2.10/my-project-opt.js"></script>
+```
 
 Note that the &#8220;launcher&#8221; line remains the same.
 

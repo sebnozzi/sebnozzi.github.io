@@ -18,14 +18,15 @@ tags:
 ---
 Peter [brings us](http://pbrc.blogspot.co.at/2014/01/99-clojure-problems-2-find-penultimate.html) this solution:
 
-<pre class="brush: clojure; notranslate">(defn penultimate [xs]
+```clojure
+(defn penultimate [xs]
   {:doc  "P02 (*) Find the last but one element of a list."
    :pre [(seq? xs)]}
   (loop [ret (first xs) xs xs]
     (if (next xs)
       (recur (first xs) (next xs))
       ret)))
-</pre>
+```
 
 I can not comment much, since I&#8217;m no Clojure developer. In particular I would like to know what `recur` does? A generic macro to do recursion on a function? Seems interesting&#8230;
 
@@ -33,13 +34,14 @@ This is my solution in Scala:
 
 <!--more-->
 
-<pre class="brush: scala; notranslate">def penultimate[T](list: List[T]): T =
+```scala
+def penultimate[T](list: List[T]): T =
   list match {
-    case List(first, last) =&gt; first
-    case first :: second :: rest =&gt; penultimate(second :: rest)
-    case _ =&gt; error("Can not find penultimate of this list: " + list)
+    case List(first, last) => first
+    case first :: second :: rest => penultimate(second :: rest)
+    case _ => error("Can not find penultimate of this list: " + list)
   }
-</pre>
+```
 
 Using pattern matching, it does the following:
 
@@ -51,29 +53,33 @@ Note the two matching styles for a list. The first one using the de-structuring 
 
 This implementation either returns the sought element, or it raises an error. It might be a cleaner, more idiomatic Scala implementation to return an `Option[T]` instead. Let&#8217;s explore that possibility:
 
-<pre class="brush: scala; notranslate">def penultimate[T](list: List[T]): Option[T] =
+```scala
+def penultimate[T](list: List[T]): Option[T] =
   list match {
-    case List(first, last) =&gt; Some(first)
-    case first :: second :: rest =&gt; penultimate(second :: rest)
-    case _ =&gt; None
+    case List(first, last) => Some(first)
+    case first :: second :: rest => penultimate(second :: rest)
+    case _ => None
   }
-</pre>
+```
 
 It can now be used like this:
 
-<pre class="brush: scala; notranslate">penultimate(myList) map { element =&gt; /* do something with element */ }
-</pre>
+```scala
+penultimate(myList) map { element => /* do something with element */ }
+```
 
 Or, if one wants to handle the case where `None` is found:
 
-<pre class="brush: scala; notranslate">penultimate(myList) getOrElse { /* no penultimate found, deal with this */}
-</pre>
+```scala
+penultimate(myList) getOrElse { /* no penultimate found, deal with this */}
+```
 
 Or, to handle both cases:
 
-<pre class="brush: scala; notranslate">penultimate(myList) map { element =&gt; 
+```scala
+penultimate(myList) map { element => 
   /* do something with element */ 
 } getOrElse { 
   /* no penultimate found, deal with this */
 }
-</pre>
+```

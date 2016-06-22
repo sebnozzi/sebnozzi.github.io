@@ -31,31 +31,35 @@ What we need is the `global` value, which is a &#8220;view&#8221; of the JavaScr
 
 It can be imported like this:
 
-<pre class="brush: scala; notranslate">import scala.scalajs.js.Dynamic.global
-</pre>
+```scala
+import scala.scalajs.js.Dynamic.global
+```
 
 Alternatively, you can import it like this:
 
-<pre class="brush: scala; notranslate">import scala.scalajs.js
-import js.Dynamic.{ global =&gt; g }
-</pre>
+```scala
+import scala.scalajs.js
+import js.Dynamic.{ global => g }
+```
 
 The latter might be more convenient way, since it imports the whole `js` package and renames `global` to something more easy to use (just `g`).
 
 Now let&#8217;s issue an alert from Scala. Import the global scope and add this to your main class:
 
-<pre class="brush: scala; highlight: [2]; notranslate">def main(): Unit = {
+```scala
+def main(): Unit = {
   g.alert("Hello from Scala")
 }
-</pre>
+```
 
 After re-compiling and re-loading the host page, you should see the corresponding browser alert.
 
 Let&#8217;s write something to the JavaScript console. Change your main class to look like this:
 
-<pre class="brush: scala; highlight: [2]; notranslate">def main(): Unit = {
+```scala
+def main(): Unit = {
   g.console.log("Logged a message from Scala")
 }
-</pre>
+```
 
 Re-compile and re-load. If you open your JavaScript console, you should see the message.

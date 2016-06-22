@@ -19,24 +19,26 @@ The first problem is to find the last element of a list.
 
 This is Peter&#8217;s [Clojure version](http://pbrc.blogspot.co.at/2014/01/99-clojure-problems-1-find-last-element.html):
 
-<pre class="brush: clojure; notranslate">(defn my-last [input]
+```clojure
+(defn my-last [input]
   "P01 (*) Find the last element of a list."
   (if (next input)
     (recur (next input))
     (first input)))
-</pre>
+```
 
 And here is my Scala version:
 
 <!--more-->
 
-<pre class="brush: scala; notranslate">def last[T](list: List[T]): T =
+```scala
+def last[T](list: List[T]): T =
   list match {
-    case List(only) =&gt; only
-    case first :: rest =&gt; last(rest)
-    case Nil =&gt; error("An empty list has no last element")
+    case List(only) => only
+    case first :: rest => last(rest)
+    case Nil => error("An empty list has no last element")
   }
-</pre>
+```
 
 Some things to note about the Scala version:
 
@@ -47,9 +49,10 @@ Some things to note about the Scala version:
 
 Because it&#8217;s generic and due to Scala&#8217;s type inference this will also work:
 
-<pre class="brush: scala; gutter: false; notranslate">scala&gt; last(List(1, 2, true, "five", 8))
+```scala
+scala> last(List(1, 2, true, "five", 8))
 res0: Any = 8
-</pre>
+```
 
 Scala will just infer to the most immediate matching super-class. In this case: `Any`.
 
@@ -57,12 +60,13 @@ But there is something disturbing in this implementation, however: raising an er
 
 Having to deal with runtime-errors or magic &#8220;nulls&#8221; is something that as a Scala developer you are inclined to avoid. Fortunately Scala makes it very easy to do so, by switching to `Option[T]`:
 
-<pre class="brush: scala; notranslate">def last[T](list: List[T]): Option[T] =
+```scala
+def last[T](list: List[T]): Option[T] =
   list match {
-    case List(only) =&gt; Some(only)
-    case first :: rest =&gt; last(rest)
-    case Nil =&gt; None
+    case List(only) => Some(only)
+    case first :: rest => last(rest)
+    case Nil => None
   }
-</pre>
+```
 
 Now, the function might return `Some[T]` or `None` (it reads like English, doesn&#8217;t it?).

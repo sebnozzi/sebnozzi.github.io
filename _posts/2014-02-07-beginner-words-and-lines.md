@@ -84,7 +84,8 @@ Here I present you my solution:
 
 The naive approach:
 
-<pre class="brush: scala; notranslate">if(args.size == 2) {
+```scala
+if(args.size == 2) {
   if(args(1) == "lines") {
     countLines(args(0))
   } else if(args(1) == "words") {
@@ -99,17 +100,18 @@ The naive approach:
     printUsage()
   }
 }
-</pre>
+```
 
 The better approach:
 
-<pre class="brush: scala; notranslate">args match {
-  case Array(file, "words") =&gt; countWords(file)
-  case Array(file, "lines") =&gt; countLines(file)
-  case Array(file, "find", wordToFind) =&gt; findWord(file, wordToFind)
-  case _ =&gt; printUsage()
+```scala
+args match {
+  case Array(file, "words") => countWords(file)
+  case Array(file, "lines") => countLines(file)
+  case Array(file, "find", wordToFind) => findWord(file, wordToFind)
+  case _ => printUsage()
 }
-</pre>
+```
 
 Things to notice:
 
@@ -119,12 +121,13 @@ Things to notice:
 
 #### Counting lines
 
-<pre class="brush: scala; notranslate">def countLines(file: String) {
+```scala
+def countLines(file: String) {
   val src = Source.fromFile(file)
   val count = src.getLines.size
   println(count)
 }
-</pre>
+```
 
 Things to notice:
 
@@ -132,18 +135,19 @@ Things to notice:
 
 #### Counting words
 
-<pre class="brush: scala; notranslate">def countWords(file: String) {
+```scala
+def countWords(file: String) {
   val src = Source.fromFile(file)
   val count =
     (for {
-      line &lt;- src.getLines
+      line <- src.getLines
     } yield {
       val words = line.split("\\s+")
       words.size
     }).sum
   println(count)
 }
-</pre>
+```
 
 Things to notice:
 
@@ -153,16 +157,17 @@ Things to notice:
 
 #### Finding words
 
-<pre class="brush: scala; notranslate">def findWord(file: String, wordToFind: String) {
+```scala
+def findWord(file: String, wordToFind: String) {
   val src = Source.fromFile(file)
   for {
-    (line, idx) &lt;- src.getLines.zipWithIndex
+    (line, idx) <- src.getLines.zipWithIndex
     if line.contains(wordToFind)
   } {
     println(f"$idx%02d: " + line)
   }
 }
-</pre>
+```
 
 Things to notice:
 

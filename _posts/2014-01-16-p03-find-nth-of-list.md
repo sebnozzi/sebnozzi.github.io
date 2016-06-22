@@ -19,22 +19,24 @@ This problem is very nice because the Clojure and Scala implementations are prac
 
 Below is [Peter&#8217;s solution](http://pbrc.blogspot.co.at/2014/01/99-clojure-problems-3-find-kth-element.html) to the problem, in Clojure:
 
-<pre class="brush: clojure; notranslate">(defn kth [n xs]  
+```clojure
+(defn kth [n xs]  
   {:doc "P03 (*) Find the Kth element of a list." 
    :pre [(seq? xs)]}
   (if (= 0 n)
     (first xs)
     (recur (- n 1) (next xs)))
   )
-</pre>
+```
 
 Here is my Scala:
 
-<pre class="brush: scala; notranslate">def nth[T](n: Int, list: List[T]): T =
+```scala
+def nth[T](n: Int, list: List[T]): T =
   if (n == 0)
     list.head
   else
     nth(n - 1, list.tail)
-</pre>
+```
 
 In this case one can see a small but significant difference where Clojure sticks to functional-programming and Scala favours object-oriented: while in Clojure `first` and `next` are functions that operate on collections, in Scala `head` and `tail` are methods to be called upon a collection instance.

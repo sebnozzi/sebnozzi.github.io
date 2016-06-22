@@ -25,7 +25,8 @@ The trick is in using Slick&#8217;s &#8220;[UnmanagedSession](http://slick.types
 
 Here I want to share with you a trait that can be used to have first-class Slick Flyway migrations:
 
-<pre class="brush: scala; notranslate">package db.migration
+```scala
+package db.migration
 
 import org.flywaydb.core.api.migration.jdbc.JdbcMigration
 import scala.slick.jdbc.UnmanagedSession
@@ -41,7 +42,7 @@ import java.sql.Connection
  * creating or modifying a table, populating the database, etc.
  *
  */
-trait SlickMigration { self: JdbcMigration =&gt;
+trait SlickMigration { self: JdbcMigration =>
 
   // Implement this in your subclass
   def slick_migrate(implicit session: Session)
@@ -58,11 +59,12 @@ trait SlickMigration { self: JdbcMigration =&gt;
   }
 
 }
-</pre>
+```
 
 Once you have this in place, you can write a Slick-based migration like this:
 
-<pre class="brush: scala; notranslate">package db.migration.default
+```scala
+package db.migration.default
 
 import org.flywaydb.core.api.migration.jdbc.JdbcMigration
 import scala.slick.driver.JdbcDriver.simple._
@@ -86,7 +88,7 @@ class V1__001_CreateMoviesTable extends JdbcMigration with SlickMigration {
   }
 
 }
-</pre>
+```
 
 Advantages:
 

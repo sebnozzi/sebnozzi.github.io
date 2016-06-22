@@ -20,7 +20,8 @@ Peter not only offers you one but [three solutions](http://pbrc.blogspot.co.at/2
 
 Clojure recursive:
 
-<pre class="brush: clojure; notranslate">(defn flatten-recur
+{% highlight clojure %}
+(defn flatten-recur
   "P07 (**) Flatten a nested list structure."
   ([xs] (flatten-recur [] xs))
   ([acc xs]
@@ -30,13 +31,14 @@ Clojure recursive:
         acc
         (-&gt; (flatten-recur acc (first xs))
             (flatten-recur (rest xs)))))))
-</pre>
+{% endhighlight %}
 
 Clojure de-structured:
 
 <!--more-->
 
-<pre class="brush: clojure; notranslate">(defn flatten-destructured
+{% highlight clojure %}
+(defn flatten-destructured
   "P07 solution I saw on cchandler's github repo"
   [x & tail]
   (concat (if (seq? x)
@@ -45,47 +47,50 @@ Clojure de-structured:
           (if (nil? tail)
             nil
             (apply flatten-destructured tail))))
-</pre>
+{% endhighlight %}
 
 Clojure with reduce:
 
-<pre class="brush: clojure; notranslate">(defn flatten-reduce
+{% highlight clojure %}
+(defn flatten-reduce
   "P07 solution I saw on rodnaph's github repo "
   [xs]
   (reduce #(if (seq? %2)
              (concat %1 (flatten-reduce %2))
              (concat %1 (list %2)))
           '() xs))
-</pre>
+{% endhighlight %}
 
 I just came up with one for Scala:
 
-<pre class="brush: scala; notranslate">def flatten(list: List[_]): List[_] = {
+```scala
+def flatten(list: List[_]): List[_] = {
   def helper(remainder: List[_], result: List[_]): List[_] =
     remainder match {
-      case Nil =&gt; result
-      case (head: List[_]) :: tail =&gt; helper(tail, result ++ flatten(head))
-      case head :: tail =&gt; helper(tail, result :+ head)
+      case Nil => result
+      case (head: List[_]) :: tail => helper(tail, result ++ flatten(head))
+      case head :: tail => helper(tail, result :+ head)
     }
   helper(list, Nil)
 }
-</pre>
+```
 
 For the first time I am forces to depart from lists of one type of elements and resort to `List[_]`, which would translate to &#8220;list of I-don&#8217;t-care&#8221;. This is of course so because due to the nature of nested lists, one cannot effectively make predictions about the type. It would result in an infinite recursion of declarations: &#8220;list of elements of type T OR of (lists of element of type T or of (lists of&#8230;&#8221;.
 
 It is also unfortunate that the type declaration makes the logic of the function a little bit more difficult to read (though one can get used to it). Of course a type-aliasing could solve the problem like this:
 
-<pre class="brush: scala; notranslate">type L = List[_]
+```scala
+type L = List[_]
 def flatten(list: L): L = {
   def helper(remainder: L, result: L): L =
     remainder match {
-      case Nil =&gt; result
-      case (head: L) :: tail =&gt; helper(tail, result ++ flatten(head))
-      case head :: tail =&gt; helper(tail, result :+ head)
+      case Nil => result
+      case (head: L) :: tail => helper(tail, result ++ flatten(head))
+      case head :: tail => helper(tail, result :+ head)
     }
   helper(list, Nil)
 }
-</pre>
+```
 
 We can see that this solution is, in spirit, not much different than the first Clojure one. It just does not explicitly ask &#8220;is this a collection?&#8221;, &#8220;is it empty?&#8221; through functions like in Clojure but leaves those decisions to the Scala pattern-matching mechanism. The benefit of this is the compiler warning if the pattern matching is not exhaustive.
 

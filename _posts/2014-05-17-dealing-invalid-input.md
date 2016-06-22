@@ -52,19 +52,21 @@ Both Some and None implement the &#8220;protocol&#8221; of superclass `Option[T]
 
 For example, let&#8217;s say we have a variable `optName` of type `Option[String]`.
 
-    optName foreach { name => println("Hello, " + name ) }
-    
+```scala
+optName foreach { name => println("Hello, " + name ) }
+```
 
 The statement above will only print a greeting IF `optName` has a value (or: is an instance of `Some[T]`). Otherwise nothing will happen. Note `name` parameter inside of the anonymous function / closure / block (however you want to call it). Inside of the block, the `name` parameter **is** of type String. We are safe there.
 
 This form allows us to deal with both cases (when optName is Some, or is None) separately:
 
-    optName map { name =>
-      println("Hello, " + name)
-    } getOrElse {
-      println("Hello, World")
-    }
-    
+```scala
+optName map { name =>
+  println("Hello, " + name)
+} getOrElse {
+  println("Hello, World")
+}
+```    
 
 And there are much more things we can do with Options, but we&#8217;ll leave it there. Just note that everything we are doing is type-safe, which means the compiler will remind (force) us if something is not quite right.
 
@@ -81,31 +83,34 @@ Armed with this knowledge, we are ready to tackle the first problem: how to pars
 
 We could model a parsing function like this:
 
-    def safelyParse(nrStr: String): Option[Int]
-    
+```scala
+def safelyParse(nrStr: String): Option[Int]
+```
 
 The input is an arbitrary String, but the output is not directly an Int but an Option[Int]. Thus, we&#8217;ll have to respectfully handle the _possible_ case that the input was correct. For example like this:
 
-    val userInput = Console.readLine()
-    val optInt = safelyParse(userInput)
-    
-    optInt foreach { intValue =>
-      println("You entered an Int: " + intValue)
-    }
-    
+```scala
+val userInput = Console.readLine()
+val optInt = safelyParse(userInput)
+
+optInt foreach { intValue =>
+  println("You entered an Int: " + intValue)
+}
+```    
 
 The above print statement will only execute IF the input was valid and the parsing succeeded. The variable `intValue` exists in a safe block which is only invoked in case of correct input. Otherwise, outside of that scope it is not clear what the Int value is, or if there is one at all.
 
 A short implementation of the `safelyParse` could be:
 
-    def safelyParse(nrStr: String): Option[Int] = {
-      try {
-        Some(nrStr.toInt)
-      } catch {
-        case e: NumberFormatException => None
-      }
-    }
-    
+```scala
+def safelyParse(nrStr: String): Option[Int] = {
+  try {
+    Some(nrStr.toInt)
+  } catch {
+    case e: NumberFormatException => None
+  }
+}
+```    
 
 # Positive Integers
 
@@ -122,8 +127,9 @@ If you could guarantee that the **only** way to create a PositiveInt was through
 
 A possible solution would look like this:
 
-    class PositiveInt private (val value: Int) extends AnyVal {}
-    
+```scala
+class PositiveInt private (val value: Int) extends AnyVal {}
+```
 
 Whoa! A lot of things going on here. Allow me to explain:
 
@@ -147,28 +153,31 @@ In Scala it&#8217;s possible to declare _object instances_ by using the `object`
 
 Let&#8217;s return at our PositiveInt class and remember that the constructor is private. Something like this is normally not possible and prevented by the compiler:
 
-    new PositiveInt(4)
-    
+```scala
+new PositiveInt(4)
+```
 
 However, instance-creation of a PositiveInt **is** possible from within the companion object!
 
 Thus, we can solve our problem like this:
 
-    object PositiveInt {
-      def create(nr: Int): Option[PositiveInt] = {
-        if (nr > 0)
-          // Note: the companion object CAN access private constructors
-          Some(new PositiveInt(nr))
-        else
-          None
-      }
-    }
-    
+```scala
+object PositiveInt {
+  def create(nr: Int): Option[PositiveInt] = {
+    if (nr > 0)
+      // Note: the companion object CAN access private constructors
+      Some(new PositiveInt(nr))
+    else
+      None
+  }
+}
+```    
 
 It could then used like:
 
-    val optPositiveInt = PositiveInt.create(someIntValue)
-    
+```scala
+val optPositiveInt = PositiveInt.create(someIntValue)
+```    
 
 Note that the creation **attempt** returns not a PositiveInt directly but an Option[PositiveInt].
 
@@ -176,17 +185,18 @@ Note that the creation **attempt** returns not a PositiveInt directly but an Opt
 
 Building on our previous example, we can now attempt to construct a PositiveInt like this:
 
-    val userInput = Console.readLine()
-    val optInt = safelyParse(userInput)
-    
-    optInt foreach { intValue =>
-      val optPositiveInt = PositiveInt.create(intValue)
-    
-      optPositiveInt foreach { posInt =>
-        println("Thanks! You gave me a positive Int: " + posInt.value)
-      }
-    }
-    
+```scala
+val userInput = Console.readLine()
+val optInt = safelyParse(userInput)
+
+optInt foreach { intValue =>
+  val optPositiveInt = PositiveInt.create(intValue)
+
+  optPositiveInt foreach { posInt =>
+    println("Thanks! You gave me a positive Int: " + posInt.value)
+  }
+}
+```
 
 The explanation given previously in the case of `safelyParse` also applies here: there are different ways to deal with the possible outcomes (Some/None).
 
