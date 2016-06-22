@@ -1,6 +1,6 @@
 ---
 id: 192
-title: 'P04 &#8211; Find the Number of Elements of a List'
+title: 'P04 - Find the Number of Elements of a List'
 date: 2014-01-16T01:48:07+00:00
 author: Sebastian Nozzi
 layout: post

@@ -1,6 +1,6 @@
 ---
 id: 185
-title: 'P02 &#8211; Find the Penultimate Element of a List'
+title: 'P02 - Find the Penultimate Element of a List'
 date: 2014-01-16T01:35:39+00:00
 author: Sebastian Nozzi
 layout: post

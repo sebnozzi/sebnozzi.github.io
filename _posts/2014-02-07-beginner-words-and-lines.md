@@ -78,9 +78,7 @@ If you already tried, are stuck or are just outright impatient, read on&#8230;
 
 Here I present you my solution:
 
-
-
-### Some highlights of the video:
+### Some highlights:
 
 #### Matching the command-line arguments
 

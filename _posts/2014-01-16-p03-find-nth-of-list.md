@@ -1,6 +1,6 @@
 ---
 id: 188
-title: 'P03 &#8211; Find the nᵗʰ Element of a List'
+title: 'P03 - Find the nᵗʰ Element of a List'
 date: 2014-01-16T01:40:01+00:00
 author: Sebastian Nozzi
 layout: post

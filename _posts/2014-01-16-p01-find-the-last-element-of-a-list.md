@@ -1,6 +1,6 @@
 ---
 id: 163
-title: 'P01 &#8211; Find the last element of a list'
+title: 'P01 - Find the last element of a list'
 date: 2014-01-16T01:07:27+00:00
 author: Sebastian Nozzi
 layout: post

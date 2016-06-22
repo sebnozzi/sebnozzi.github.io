@@ -1,6 +1,6 @@
 ---
 id: 204
-title: 'P07 &#8211; Flatten a nested list structure'
+title: 'P07 - Flatten a nested list structure'
 date: 2014-01-19T11:53:12+00:00
 author: Sebastian Nozzi
 layout: post

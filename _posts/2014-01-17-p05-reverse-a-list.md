@@ -1,6 +1,6 @@
 ---
 id: 197
-title: 'P05 &#8211; Reverse a List'
+title: 'P05 - Reverse a List'
 date: 2014-01-17T23:50:20+00:00
 author: Sebastian Nozzi
 layout: post
